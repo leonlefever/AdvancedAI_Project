@@ -7,10 +7,6 @@ data/processed/
 # Models
 models/
 
-
-# (Optional) If raw is huge or proprietary, uncomment:
-data/raw/
-
 # OS-specific
 .DS_Store
 Thumbs.db
