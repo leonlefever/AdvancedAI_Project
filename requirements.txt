@@ -1,7 +1,14 @@
 pandas
+numpy
+scikit-learn
+xgboost
+shap
+sentence-transformers
+faiss-cpu
+gradio
 langchain
 langchain-community
 openai
-sentence-transformers
-gradio
-shap
+python-dotenv
+tqdm
+joblib
