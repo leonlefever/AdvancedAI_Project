@@ -1,1 +1,7 @@
 pandas
+langchain
+langchain-community
+openai
+sentence-transformers
+gradio
+shap
