@@ -36,7 +36,7 @@ The dataset is a cleaned version of a Madrid housing dataset (~22,000 rows, 60+ 
 
 - Many features like `street_number`, `door`, `portal` were 100% missing.
 - Missing latitude/longitude limited use of map-based models.
-- Address inconsistencies required us to ignore geolocation.
+- Address inconsistencies required me to ignore geolocation.
 
 ---
 
@@ -46,7 +46,7 @@ The dataset is a cleaned version of a Madrid housing dataset (~22,000 rows, 60+ 
 I trained an XGBoost Regressor on selected numeric and categorical features. I evaluated it using RMSE on log-transformed price values and achieved an RMSE of ~0.222 (log-scale).
 
 **Explainability (SHAP):**  
-For each predicted price, we used SHAP to extract the top 3 most impactful features. These were stored in a JSON field (`shap_top3`) for embedding purposes.
+For each predicted price, I used SHAP to extract the top 3 most impactful features. These were stored in a JSON field (`shap_top3`) for embedding purposes.
 
 **Semantic Embeddings:**  
 Using the MiniLM model (384-dim), I embedded a textual summary per listing (title, area, top-3 SHAP features, predicted price).
