@@ -1,7 +1,7 @@
-from app.embeddings import load_langchain_embedding
-from app.retriever import load_vectorstore
-from app.qa_chain import create_qa_pipeline
-from app.interface import create_ui
+from app.s01_embeddings import load_langchain_embedding
+from app.s02_retriever import load_vectorstore
+from app.s03_qa_chain import create_qa_pipeline
+from app.s04_interface import create_ui
 
 embedding = load_langchain_embedding()  
 retriever = load_vectorstore(embedding)
