@@ -37,7 +37,7 @@ def create_ui(qa):
             gr.Markdown("Ask about housing prices, neighborhoods, or listings in Madrid.")
 
             with gr.Row():
-                # Left: Chat functionality
+                # Chat
                 with gr.Column(scale=6):
                     response_output = gr.Textbox(label="✅ Assistant Response", lines=10, interactive=False)
 
@@ -66,7 +66,7 @@ def create_ui(qa):
                     submit_btn = gr.Button("🔍 Ask")
                     clear_btn = gr.Button("🗑️ Clear")
 
-                # Right: Property price prediction
+                # Property price prediction
                 with gr.Column(scale=5):
                     gr.Markdown("### 🧮 Predict Listing Price")
 
@@ -102,7 +102,7 @@ def create_ui(qa):
 
                     generate_query_btn = gr.Button("📤 Ask LLM for Price")
 
-            # Button handlers
+            # Buttons
             def wrapped_answer(query):
                 return answer_question(qa, query)
 
