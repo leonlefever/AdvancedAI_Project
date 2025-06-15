@@ -24,20 +24,73 @@ The project is organized into the following main components:
   - Builds machine learning models to predict property prices.
   - Includes SHAP (SHapley Additive exPlanations) analysis for feature importance and embedding generation for retrieval tasks.
 
-### 2. Gradio Application
+### 2. Gradio-Based Application
 
-- **`gradio_app.py`**:
-  - Implements a Gradio-based user interface for querying property data and retrieving predictions.
-  - Uses FAISS for vector-based retrieval and HuggingFace embeddings for semantic search.
+This application allows users to interact with real estate data using natural language queries.
 
-### 3. Data
+- **`gradio_app.py`**  
+  - Entry point that launches the Gradio interface.
+  - Orchestrates the embedding model, retriever, LLM pipeline, and UI.
 
-- **Raw Data**: Located in `archive/`.
-- **Processed Data**: Outputs from preprocessing and modeling are saved in `data/processed/`.
+---
 
-### 4. Vectorstore
+### 3. Data Structure
 
-- Stores embeddings and FAISS indices for efficient retrieval.
+- **Raw Data**:  
+  Stored in the `archive/` directory.
+
+- **Processed Data**:  
+  Cleaned, transformed, and enriched datasets are saved in `data/processed/`.
+
+- **Vectorstore**:  
+  Contains:
+  - FAISS index (`madrid.faiss`)
+  - Serialized metadata (`madrid.pkl`)
+  - Embedding matrix (`embeddings.npy`)
+  - Listing IDs (`ids.npy`)  
+  Located in the `vectorstore/` directory for fast vector search.
+
+---
+
+### 4. `app/` Module Breakdown
+
+This folder contains the modular backend logic for the Gradio app:
+
+| File               | Responsibility                                                           |
+|--------------------|---------------------------------------------------------------------------|
+| `s01_embeddings.py` | Loads the HuggingFace embedding model used for semantic encoding.         |
+| `s02_retriever.py`  | Loads the FAISS index and exposes it as a retriever with metadata support.|
+| `s03_qa_chain.py`   | Creates the LangChain `RetrievalQA` chain using the OpenAI LLM.           |
+| `s04_interface.py`  | Constructs the Gradio UI and formats both input and output presentation.  |
+
+---
+
+### 🔄 Application Flow
+
+1. **Embeddings**:  
+   `s01_embeddings.py` loads the sentence-transformers model for vector encoding.
+
+2. **Vectorstore**:  
+   `s02_retriever.py` loads the FAISS index and maps it to listing metadata.
+
+3. **QA Pipeline**:  
+   `s03_qa_chain.py` connects the retriever to OpenAI's LLM via LangChain.
+
+4. **User Interface**:  
+   `s04_interface.py` sets up the Gradio Blocks layout, input form, and result rendering.
+
+---
+
+
+
+### 🔄 App Flow
+
+1. `s01_embeddings.py` loads the embedding model.
+2. `s02_retriever.py` loads the FAISS vector index with metadata.
+3. `s03_qa_chain.py` connects the retriever to the OpenAI LLM.
+4. `s04_interface.py` wraps everything into a chatbot UI via Gradio.
+
+---
 
 ## Installation
 
