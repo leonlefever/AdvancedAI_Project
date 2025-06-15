@@ -1,7 +1,6 @@
 import gradio as gr
 import traceback
 
-
 # === Query handler
 def answer_question(qa, query):
     try:
@@ -61,9 +60,47 @@ def create_ui(qa):
             )
 
             clear_btn.click(
-                fn=lambda: ("", "", ""),
+                fn=lambda: ("", "", "", ""),
                 inputs=[],
                 outputs=[query_input, response_output, sources_output, status_output]
             )
+
+            with gr.Accordion("🏷️ Ask price based on custom property", open=False):
+                sq_mt_built = gr.Slider(20, 500, value=80, step=1, label="Size (m²)")
+                n_rooms = gr.Slider(1, 10, value=3, step=1, label="Number of Rooms")
+                n_bathrooms = gr.Slider(1, 5, value=2, step=1, label="Number of Bathrooms")
+                neighborhood_id = gr.Number(value=23, label="Neighborhood ID")
+                built_year = gr.Number(value=2000, label="Year Built")
+
+                has_lift = gr.Checkbox(label="Lift")
+                has_terrace = gr.Checkbox(label="Terrace")
+                has_pool = gr.Checkbox(label="Pool")
+                has_parking = gr.Checkbox(label="Parking")
+
+                generate_query_btn = gr.Button("📤 Ask LLM for Price")
+                
+                def construct_query_and_ask(
+                    sqm, rooms, baths, hood, year, lift, terrace, pool, parking
+                ):
+                    features = []
+                    if lift: features.append("lift")
+                    if terrace: features.append("terrace")
+                    if pool: features.append("pool")
+                    if parking: features.append("parking")
+                    features_str = ", ".join(features) if features else "no extra features"
+                    
+                    query = (
+                        f"What is the expected price for a {sqm} m² property in neighborhood {int(hood)} "
+                        f"with {rooms} rooms, {baths} bathrooms, built in {int(year)}, with {features_str}?"
+                    )
+                    return answer_question(qa, query)
+
+                generate_query_btn.click(
+                    fn=construct_query_and_ask,
+                    inputs=[sq_mt_built, n_rooms, n_bathrooms, neighborhood_id, built_year,
+                            has_lift, has_terrace, has_pool, has_parking],
+                    outputs=[response_output, sources_output, status_output]
+                )
+
 
     return demo
