@@ -1,5 +1,19 @@
+.vscode/
 
-.ipynb_checkpoints/
+dist/
+build/
+*.egg-info/
+
+
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+*.cache
+
+*.ipynb_checkpoints
+*.nbconvert.ipynb
+
 
 # Data
 data/processed/
@@ -11,4 +25,17 @@ models/
 .DS_Store
 Thumbs.db
 
-.env
+*.env
+.env.*
+token.json
+openai_api_key.txt
+
+venv/
+.env/
+env/
+
+
+vectorstore/
+*.faiss
+*.pkl
+*.npy

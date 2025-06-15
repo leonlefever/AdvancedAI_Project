@@ -62,7 +62,7 @@ Using the MiniLM model (384-dim), I embedded a textual summary per listing (titl
 
 **Model Performance:**
 
-- XGBoost RMSE (log-scale): 0.222
+- XGBoost RMSE (log-scale): 0.216
 - Qualitatively, predictions are plausible and consistent across neighborhoods.
 
 **Insights:**
