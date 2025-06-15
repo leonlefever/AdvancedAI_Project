@@ -4,7 +4,6 @@ dist/
 build/
 *.egg-info/
 
-
 __pycache__/
 *.py[cod]
 *.log
@@ -14,12 +13,8 @@ __pycache__/
 *.ipynb_checkpoints
 *.nbconvert.ipynb
 
-
 # Data
 data/processed/
-
-# Models
-models/
 
 # OS-specific
 .DS_Store
@@ -33,7 +28,6 @@ openai_api_key.txt
 venv/
 .env/
 env/
-
 
 vectorstore/
 *.faiss
