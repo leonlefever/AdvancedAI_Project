@@ -8,6 +8,8 @@ faiss-cpu
 gradio
 langchain
 langchain-community
+langchain-openai
+langchain-huggingface
 openai
 python-dotenv
 tqdm

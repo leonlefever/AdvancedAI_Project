@@ -32,7 +32,7 @@ The project is organized into the following main components:
 
 ### 3. Data
 
-- **Raw Data**: Located in `data/raw/`.
+- **Raw Data**: Located in `archive/`.
 - **Processed Data**: Outputs from preprocessing and modeling are saved in `data/processed/`.
 
 ### 4. Vectorstore
