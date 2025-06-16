@@ -49,6 +49,9 @@ This application allows users to interact with real estate data using natural la
   - Embedding matrix (`embeddings.npy`)
   - Listing IDs (`ids.npy`)  
   Located in the `vectorstore/` directory for fast vector search.
+  
+  Note: The Embedding matrix (`embeddings.npy`) and Listing IDs (`ids.npy`) are currently not in use. 
+    they are loaded in the backend (s01_embeddings.py) for manual testing later on.
 
 ---
 
@@ -56,8 +59,8 @@ This application allows users to interact with real estate data using natural la
 
 This folder contains the modular backend logic for the Gradio app:
 
-| File               | Responsibility                                                           |
-|--------------------|---------------------------------------------------------------------------|
+| File                | Responsibility                                                            |
+|---------------------|---------------------------------------------------------------------------|
 | `s01_embeddings.py` | Loads the HuggingFace embedding model used for semantic encoding.         |
 | `s02_retriever.py`  | Loads the FAISS index and exposes it as a retriever with metadata support.|
 | `s03_qa_chain.py`   | Creates the LangChain `RetrievalQA` chain using the OpenAI LLM.           |

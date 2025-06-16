@@ -15,5 +15,6 @@ def load_vectorstore(embedding):
         index_name="madrid",
         allow_dangerous_deserialization=True
     )
-    # if higher -> beter result but price goes up very fast for example: k = 100 means 0.03 euro per query. 100 queries a day means 3 euro a day!
+    # if higher -> beter result but price goes up very fast for example: k = 100 means 0.03 euro per query. 
+    # 100 queries a day means 3 euro a day!
     return vectorstore.as_retriever(search_kwargs={"k": 30})
