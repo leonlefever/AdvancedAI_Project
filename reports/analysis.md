@@ -92,4 +92,20 @@ While using `k=30` gives better results, it increases the prompt size sent to GP
 
 ## Final Thoughts
 
-The current embedding setup works well for semantic question-answering, but it lacks flexibility for numeric filtering, aggregations, and dynamic updates. If I were to productionize this system, I would shift toward **hybrid semantic + symbolic reasoning**, and invest in **smarter retrieval logic** that doesn’t rely purely on FAISS similarity.
+While the current embedding setup performs well for semantic question-answering, it falls short when handling numerical precision, statistical queries, and real-time updates. To make the system production-ready, I would move toward a **hybrid approach**—combining semantic embeddings with **structured filtering and symbolic reasoning**. Additionally, I would invest in a more **adaptive retrieval pipeline** that goes beyond FAISS similarity alone, enabling richer and more reliable answers across a wider range of query types.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
